@@ -7,7 +7,7 @@ const dotenv = require('dotenv').config();
 const Sentiment = require('sentiment');
 
 const dev = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 const app = next({ dev });
 const handler = app.getRequestHandler();
@@ -18,7 +18,7 @@ const pusher = new Pusher({
     key: process.env.PUSHER_APP_KEY,
     secret: process.env.PUSHER_APP_SECRET,
     cluster: process.env.PUSHER_APP_CLUSTER,
-    encrypted: true
+    useTLS: true
 });
 
 
