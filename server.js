@@ -34,6 +34,25 @@ app.prepare()
             return handler(req, res);
         });
 
+        /********************
+        * Comments endpoints 
+        ********************/
+        const commentsHistory = { comments: [] };
+
+        server.post('/comment', (req, res, next) => {
+            const { person = null, comment = '', timestamp = (+new Date) } = req.body;
+            const sentimentScore = sentiment.analyze(comment).score;
+            const commentObject = { person, comment, timestamp, sentiment: sentimentScore };
+
+            commentsHistory.comments.push(commentObject);
+            pusher.trigger('post-comments', 'new-comment', { comment: commentObject });
+        });
+
+        server.post('/comments', (req, res, next) => {
+            res.json({ ...commentsHistory, status: 'success' });
+        });
+
+
         server.listen(port, err => {
             if (err) throw err;
             console.log(`> Ready on http://localhost:${port}`);
