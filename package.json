@@ -1,0 +1,24 @@
+{
+  "name": "realtime-comments-app",
+  "description": "A realtime comments widget which detects the mood of a person based on the words they use in their comments.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "next": "^9.3.2",
+    "pusher": "^3.0.1",
+    "pusher-js": "^5.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sentiment": "^5.0.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "npm-run-all": "^4.1.5"
+  }
+}
