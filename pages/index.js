@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Layout from '../components/Layout';
-import Comments from '../components/Comments';
+import CommentsContainer from '../components/CommentsContainer';
 
 export default function index() {
     const [post, setPost] = useState(null);
@@ -34,7 +34,7 @@ export default function index() {
                     </section>
 
                     <section className="col-md-4 position-relative d-flex flex-wrap h-100 align-items-start align-content-between bg-light px-0">
-                        {post && <Comments />}
+                        {post && <CommentsContainer />}
                     </section>
 
                 </div>
