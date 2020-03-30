@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Layout from '../components/Layout';
-import CommentsContainer from '../components/CommentsContainer';
+import CommentsContainer from '../containers/CommentsContainer';
 
 export default function index() {
     const [post, setPost] = useState(null);

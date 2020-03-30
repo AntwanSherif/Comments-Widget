@@ -1,11 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios';
 import Pusher from 'pusher-js';
-import Comment from './Comment';
-
-const SAD_EMOJI = [55357, 56864];
-const HAPPY_EMOJI = [55357, 56832];
-const NEUTRAL_EMOJI = [55357, 56848];
+import Comment from '../components/Comment';
+import EMOJIS from '../constants/emojis';
 
 const PEOPLE = ['Antwan', 'John', 'Steve', 'Anna', 'Margaret', 'Felix', 'Chris', 'Jamie', 'Rose', 'Bob', 'Vanessa', 'Bridget', 'Sebastian', 'Richard'];
 const nameBadgeStyles = {
@@ -89,12 +86,12 @@ export default function CommentsContainer() {
             <div className="px-4 pb-4 w-100 d-flex flex-row flex-wrap align-items-start align-content-start position-relative" style={{ height: 'calc(100% - 250px)', overflowY: 'scroll' }}>
                 {
                     comments.map(comment => {
-                        const mood = comment.sentiment > 0 ? HAPPY_EMOJI : (comment.sentiment === 0 ? NEUTRAL_EMOJI : SAD_EMOJI);
+                        const mood = EMOJIS[comment.sentiment];
 
                         return (
                             <Fragment key={comment.timestamp}>
                                 <div className={`d-flex justify-content-start align-items-center w-100 font-weight-bold text-dark mt-4 pb-1 px-1`} style={{ fontSize: '0.9rem' }}>
-                                    <span className="d-inline-block pr-1" style={{ fontSize: '1.25rem' }}>{String.fromCodePoint(...mood)}</span>
+                                    <span className="d-inline-block pr-1" style={{ fontSize: '1.25rem' }}>{mood}</span>
                                     <span className="align-middle" style={{ lineHeight: '1.25rem' }}>{comment.person || 'Anonymous'}</span>
                                 </div>
 
